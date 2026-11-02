@@ -71,6 +71,17 @@ onBeforeUnmount(() => document.removeEventListener('click', closeAll))
 
 <template>
   <header class="site-header">
+    <svg class="deco deco-left" viewBox="0 0 280 188" preserveAspectRatio="xMinYMin slice" aria-hidden="true" focusable="false">
+      <polygon fill="#cc0a12" points="0,15 272,188 214,188 0,51" />
+      <polygon fill="#ffbf0d" points="0,62 198,188 119,188 0,112" />
+      <polygon fill="#000" points="0,112 119,188 0,188" />
+    </svg>
+    <svg class="deco deco-right" viewBox="0 108 203 140" preserveAspectRatio="xMaxYMax slice" aria-hidden="true" focusable="false">
+      <polygon fill="#c90710" points="22,247 149,0 202,0 202,110 105,174" />
+      <polygon fill="#8a0405" points="202,29 118,158 202,47" />
+      <polygon fill="#fcbb06" points="202,47 54,247 170,162 184,139 202,119" />
+      <polygon fill="#000" points="202,132 107,228 202,172" />
+    </svg>
     <div class="header-inner">
       <a class="brand-large" href="#" aria-label="Tribunal de Contas de Angola">
         <img :src="logoPrincipal" alt="Tribunal de Contas de Angola" />
@@ -149,12 +160,15 @@ onBeforeUnmount(() => document.removeEventListener('click', closeAll))
 </template>
 
 <style scoped>
-.site-header{border-top:5px solid #3b3b3b;width:100%}
-.header-inner{max-width:1369px;margin:0 auto;display:flex;align-items:stretch;gap:40px}
-.brand-large{flex:0 0 241px;height:179px;background: #fff;display:flex;align-items:center;justify-content:center}
-.brand-large img{width:100%;height:100%;object-fit:contain}
+.site-header{position:relative;width:100%;height:188px;background:#fff;overflow:hidden}
+.deco{position:absolute;top:0;height:188px;pointer-events:none}
+.deco-left{left:0;width:280px}
+.deco-right{right:0;width:272px}
+.header-inner{position:relative;max-width:1500px;height:188px;margin:0 auto;display:flex;align-items:stretch;gap:40px}
+.brand-large{flex:0 0 241px;height:179px;margin-top:5px;background:transparent;display:flex;align-items:center;justify-content:center}
+.brand-large img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
 .header-content{flex:1;min-width:0}
-.topbar{height:127px;display:flex;align-items:flex-start;padding-top:28px;gap:24px}
+.topbar{height:125px;display:flex;align-items:flex-start;padding-top:28px;gap:24px}
 .contact-items{display:flex;align-items:center;gap:18px;padding-top:20px;white-space:nowrap}
 .contact-items a{display:flex;align-items:center;gap:14px;color:#777;text-decoration:none;font-size:14px}
 .contact-items svg{color:var(--navy)}
@@ -163,8 +177,8 @@ onBeforeUnmount(() => document.removeEventListener('click', closeAll))
 .languages button{border:0;background:none;padding:0;color:#777;font-size:14px;cursor:pointer;text-align:left}
 .languages button.active{font-weight:600}
 .brand-small{margin-left:auto;margin-right:92px;display:block;width:82px;height:82px}
-.brand-small img{width:100%;height:100%;object-fit:contain}
-.main-nav{height:57px;border-top:1px solid var(--line);display:flex;align-items:center;position:relative}
+.brand-small img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
+.main-nav{height:63px;border-top:1px solid var(--line);display:flex;align-items:center;position:relative}
 .nav-list{display:flex;align-items:center;gap:27px;list-style:none;margin:0;padding:0 18px 0 6px;flex:1;min-width:0}
 .nav-list>li{position:relative;white-space:nowrap}
 .nav-list a,.nav-trigger{font-size:13px;color:var(--text);text-decoration:none;background:none;border:0;padding:0;cursor:pointer;font-family:inherit}
@@ -175,13 +189,18 @@ onBeforeUnmount(() => document.removeEventListener('click', closeAll))
 .has-dropdown.open>.dropdown{display:block}
 .dropdown-right{left:auto;right:0}
 .search-toggle{height:49px;width:49px;border:0;background:#f1f1f1;border-radius:3px;color:#333;cursor:pointer;flex:0 0 auto;display:flex;align-items:center;justify-content:center}
-.search-form{display:none;position:absolute;right:0;top:57px;background:white;padding:10px;box-shadow:0 4px 12px #0002;z-index:12}
+.search-form{display:none;position:absolute;right:0;top:63px;background:white;padding:10px;box-shadow:0 4px 12px #0002;z-index:12}
 .search-form.open{display:flex}
 .search-form input{border:1px solid #ccc;padding:10px;min-width:220px}
 .search-form button{border:0;background:var(--navy);color:white;padding:0 14px;cursor:pointer}
 .mobile-toggle{display:none}
 
+@media(max-width:1500px){
+  .deco-left{width:200px}
+  .deco-right{width:200px}
+}
 @media(max-width:1200px){
+  .deco{display:none}
   .header-inner{padding:0 18px;gap:24px}
   .brand-large{flex-basis:200px}
   .nav-list{gap:16px}
@@ -189,7 +208,9 @@ onBeforeUnmount(() => document.removeEventListener('click', closeAll))
   .brand-small{margin-right:20px}
 }
 @media(max-width:900px){
-  .header-inner{gap:0;padding:0;display:block}
+  .site-header{height:auto;overflow:visible}
+  .deco{display:none}
+  .header-inner{gap:0;padding:0;display:block;height:auto}
   .brand-large{display:none}
   .topbar{height:92px;padding:12px 18px;align-items:center}
   .contact-items{padding-top:0;gap:12px}
