@@ -90,9 +90,9 @@ onBeforeUnmount(() => document.removeEventListener('click', closeAll))
       <div class="header-content">
         <div class="topbar">
           <div class="contact-items">
-            <a href="mailto:info@tcontas.ao"><Mail :size="14" /><span>info@tcontas.ao</span></a>
+            <a href="mailto:info.nosporangola@gmail.com"><Mail :size="14" /><span>info.nosporangola@gmail.com</span></a>
             <span class="separator"></span>
-            <a href="tel:+244923126130"><Phone :size="14" /><span>+244 923 126 130</span></a>
+            <a href="tel:+244951366673"><Phone :size="14" /><span>+244 951 366 673</span></a>
             <span class="separator"></span>
           </div>
           <a class="brand-small" href="#" aria-label="Página inicial">
